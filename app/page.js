@@ -39,6 +39,9 @@ export default function Home() {
     setTasks(newTasks);
   };
 
+  // calculate the number of uncompleted items
+  const uncompletedItems = tasks.filter(task => !task.completed).length;
+
   return (
     <div className="container mx-auto p-4">
       <div className="flex justify-between items-center mb-4">
@@ -93,7 +96,7 @@ export default function Home() {
             ))}
         </ul>
         <div className="mt-4 flex justify-between items-center text-sm text-gray-400">
-          <span> 'n' items left</span>  {/* show how many uncompleted items left */}
+          <span> {uncompletedItems} uncompleted items left</span>  {/* show how many uncompleted items left */}
           <div>
             <button onClick={() => setFilter('all')} className={`mr-2 ${filter === 'all' ? 'text-white' : ''}`}>All</button>
             <button onClick={() => setFilter('active')} className={`mr-2 ${filter === 'active' ? 'text-white' : ''}`}>Active</button>
